@@ -3,9 +3,18 @@ def main():
     text = get_book_text(book_path)
     words = word_count(text)
     letters = letter_count(text)
+    letters_list = list(letters.items())
+    letters_list.sort()
+    letter = []
+    letter_numbers = []
+    for i in letters_list:
+        letter.append(i[0])
+        letter_numbers.append(i[1])
     print(f"--- Book Report for {book_path}---")
-    print(f"There are {words} words in the document")
-    print(letters)
+    print(f"There are {words} words in the document. \n")
+    for i in range(len(letter)):
+         print(f"The '{letter[i]}', character was found {letter_numbers[i]} times.")
+    print("\n--- End of Report ---")
     
 
     
@@ -29,9 +38,7 @@ def letter_count(text):
                 letters[letter] +=1
             else:
                 letters[letter] = 1
-    letters_list = list(letters.items())
-    letters_list.sort()
-    return letters_list
+    return letters
 
 if __name__ == "__main__":
     main()
